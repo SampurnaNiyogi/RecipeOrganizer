@@ -31,9 +31,3 @@ class RecipeCategoriesSerializer(serializers.DocumentSerializer):
         model = RecipeCategories
         fields = '__all__'
 
-
-
-
-
-
-
