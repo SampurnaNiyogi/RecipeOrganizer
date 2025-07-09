@@ -71,14 +71,10 @@ class RecipesByCategory(generics.ListAPIView):
 
 #List Recipes by Ingredient
 class RecipeByIngredient(generics.ListAPIView):
-    serializer_class = RecipesSerializer
+    serializer_class = RecipeIngredientSerializer
 
     def get_queryset(self):
         ingredient_id = int(self.kwargs.get('ingredient_id'))
-
-        recipe_ids = [ 
-            ri.recipe_id for ri in RecipeIngredients.objects.filter(ingredient_id=ingredient_id)
-        ]
-        return Recipes.objects.filter(recipe_id__in=[r.recipe_id for r in recipe_ids])
+        return RecipeIngredients.objects.filter(ingredient_id=ingredient_id)
 
 #List Ingredients by Recipe

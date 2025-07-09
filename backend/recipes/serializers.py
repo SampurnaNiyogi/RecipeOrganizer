@@ -12,6 +12,9 @@ class IngredientSerializer(serializers.DocumentSerializer):
         fields = '__all__'
 
 class RecipeIngredientSerializer(serializers.DocumentSerializer):
+    recipe_id = RecipesSerializer(read_only = True)
+    ingredient_id = IngredientSerializer(read_only = True)
+    
     class Meta:
         model = RecipeIngredients
         fields = '__all__'
